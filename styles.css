@@ -1,5 +1,5 @@
-:root{--bg:#f6f8f5;--card:#fff;--ink:#10251f;--mut:#5b6b64;--line:#dbe3de;--acc:#0f9d73;--acc2:#0b6e52;--onacc:#fff}
-[data-theme=dark]{--bg:#0b1a16;--card:#12271f;--ink:#eaf4ef;--mut:#9db3a9;--line:#244037;--acc:#34d399;--acc2:#6ee7b7;--onacc:#06231a}
+:root{--bg:#FBF8F1;--card:#FFFFFF;--ink:#1B2430;--mut:#5E6673;--line:#E7E0D0;--acc:#1E3A5F;--acc2:#1E3A5F;--onacc:#FFFFFF;--gold:#B8893A}
+[data-theme=dark]{--bg:#0F1722;--card:#17212F;--ink:#EEF1F5;--mut:#9AA6B6;--line:#263447;--acc:#7FA6DB;--acc2:#9DBDE8;--onacc:#0F1722;--gold:#E0B96A}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:17px/1.65 "Segoe UI",system-ui,-apple-system,sans-serif}
@@ -70,3 +70,13 @@ footer .links{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 14px}
 .article-meta,.eyebrow{font-size:.85rem;color:var(--acc2);font-weight:600}
 .article-box{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--acc);border-radius:14px;padding:16px 20px;margin:20px 0}
 #ck{position:fixed;left:14px;right:14px;bottom:14px;z-index:20;max-width:820px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:.92rem;box-shadow:0 10px 30px #0004}
+
+.intro{min-height:calc(100vh - 80px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 0 36px}
+.big{width:92px;height:92px;border-radius:24px;background:var(--acc);color:var(--onacc);display:grid;place-items:center;font:700 2.5rem Georgia,serif;margin-bottom:18px}
+.intro .meta{font-size:1.05rem}
+.intro .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:26px}
+.pills span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:.88rem;color:var(--mut)}
+.scroll{margin-top:38px;color:var(--mut);font-size:.9rem}
+section+section{border-top:1px solid var(--line)}
+@media(max-width:900px){.bar{flex-wrap:wrap;height:auto;padding:10px 0}nav{display:flex;order:3;width:100%;gap:18px;overflow-x:auto;font-size:.9rem}}

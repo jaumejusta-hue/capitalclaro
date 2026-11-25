@@ -1,9 +1,2 @@
-CAPITALCLARO v3 - QUÉ SUBIR A GITHUB
-Basado en TUS archivos actuales del repositorio (textos, correo y avisos legales conservados).
-
-1) Sube todos estos archivos a la raíz del repositorio, sustituyendo los existentes:
-   index.html, styles.css, app.js, sobre.html, contacto.html, privacidad.html, aviso-legal.html,
-   descargo.html, crear-presupuesto.html, validar-idea-negocio.html, interes-compuesto.html
-   Archivos NUEVOS: categoria.html, herramientas.html, cookies.html
-2) Después puedes borrar script.js (ya no se usa).
-3) El Google Tag Manager ya NO está pegado en cada página: ahora lo carga app.js solo si el visitante acepta las cookies.
+CAPITALCLARO v5 - Sube TODOS los archivos de esta carpeta a la raiz del repositorio (reemplazan a los existentes).
+Puedes borrar script.js y README.txt (ya no se usan).
