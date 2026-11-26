@@ -1,2 +1,22 @@
-CAPITALCLARO v8 - Sube TODOS los archivos de esta carpeta a la raiz del repositorio (incluidos hero3d.js, favicon.svg y 404.html).
-Sustituye a las versiones V6 y V7. Puedes borrar categoria.html y LEEME.txt.
+ACTUALIZACIÓN CAPITALCLARO — PORTADA 3D
+
+Archivos incluidos:
+- index.html: reemplazo de la portada principal.
+- hero3d.js: nueva escena 3D, con pausa cuando queda fuera de pantalla o la pestaña está oculta.
+- mejoras-3d.css: refinamiento visual adicional.
+
+INSTALACIÓN EN GITHUB
+1. Haz una copia de seguridad de index.html y hero3d.js actuales.
+2. Sube y sustituye index.html.
+3. Sube y sustituye hero3d.js.
+4. Añade mejoras-3d.css a la raíz del repositorio.
+5. Comprueba que index.html contiene estas dos hojas de estilo en este orden:
+   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="mejoras-3d.css">
+6. No sustituyas app.js ni las páginas legales con este paquete.
+
+DEPENDENCIAS
+La portada conserva Three.js r128 desde cdnjs y carga hero3d.js y app.js al final del body.
+
+NOTA
+Este paquete solo actualiza la portada y el sistema 3D. No amplía aún los textos de las 12 guías ni modifica las calculadoras.
