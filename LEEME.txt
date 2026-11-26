@@ -1,2 +1,2 @@
-CAPITALCLARO v5 - Sube TODOS los archivos de esta carpeta a la raiz del repositorio (reemplazan a los existentes).
-Puedes borrar script.js y README.txt (ya no se usan).
+CAPITALCLARO v8 - Sube TODOS los archivos de esta carpeta a la raiz del repositorio (incluidos hero3d.js, favicon.svg y 404.html).
+Sustituye a las versiones V6 y V7. Puedes borrar categoria.html y LEEME.txt.
