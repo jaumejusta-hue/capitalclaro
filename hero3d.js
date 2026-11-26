@@ -3,14 +3,13 @@
   'use strict';
 
   var canvas = document.getElementById('hero3d');
-
   if (!canvas || !window.THREE) return;
 
-  var THREE = window.THREE;
+  var T = window.THREE;
   var renderer;
 
   try {
-    renderer = new THREE.WebGLRenderer({
+    renderer = new T.WebGLRenderer({
       canvas: canvas,
       alpha: true,
       antialias: true,
@@ -21,7 +20,7 @@
     return;
   }
 
-  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.outputEncoding = T.sRGBEncoding;
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
   renderer.setClearColor(0x000000, 0);
 
@@ -29,68 +28,68 @@
     '(prefers-reduced-motion: reduce)'
   ).matches;
 
-  var scene = new THREE.Scene();
+  var scene = new T.Scene();
+  var camera = new T.PerspectiveCamera(34, 1, 0.1, 100);
 
-  var camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
   camera.position.set(0, 1.1, 12);
 
-  // ILUMINACIÓN
-  scene.add(new THREE.AmbientLight(0xffffff, 0.65));
+  // ILUMINACION
+  scene.add(new T.AmbientLight(0xffffff, 0.65));
 
-  var mainLight = new THREE.DirectionalLight(0xffffff, 1.3);
+  var mainLight = new T.DirectionalLight(0xffffff, 1.3);
   mainLight.position.set(4, 7, 6);
   scene.add(mainLight);
 
-  var goldLight = new THREE.PointLight(0xffc66b, 2.1, 25);
+  var goldLight = new T.PointLight(0xffc66b, 2.1, 25);
   goldLight.position.set(-4, 3, 5);
   scene.add(goldLight);
 
-  var blueLight = new THREE.PointLight(0x6f9fd7, 1.4, 25);
+  var blueLight = new T.PointLight(0x6f9fd7, 1.4, 25);
   blueLight.position.set(4, -2, 4);
   scene.add(blueLight);
 
-  var world = new THREE.Group();
+  var world = new T.Group();
   scene.add(world);
 
-  var financialGroup = new THREE.Group();
+  var financialGroup = new T.Group();
   world.add(financialGroup);
 
   // MATERIALES
-  var gold = new THREE.MeshStandardMaterial({
+  var gold = new T.MeshStandardMaterial({
     color: 0xd9a441,
     metalness: 0.85,
     roughness: 0.24
   });
 
-  var lightGold = new THREE.MeshStandardMaterial({
+  var lightGold = new T.MeshStandardMaterial({
     color: 0xf1cc7c,
     metalness: 0.8,
     roughness: 0.2
   });
 
-  var blue = new THREE.MeshStandardMaterial({
+  var blue = new T.MeshStandardMaterial({
     color: 0x527eae,
     metalness: 0.55,
     roughness: 0.3
   });
 
-  var darkBlue = new THREE.MeshStandardMaterial({
+  var darkBlue = new T.MeshStandardMaterial({
     color: 0x18334f,
     metalness: 0.45,
     roughness: 0.38
   });
 
   // PLATAFORMA
-  var platform = new THREE.Mesh(
-    new THREE.CylinderGeometry(3.8, 4, 0.25, 80),
+  var platform = new T.Mesh(
+    new T.CylinderGeometry(3.8, 4, 0.25, 80),
     darkBlue
   );
 
   platform.position.set(0, -1.65, 0);
   financialGroup.add(platform);
 
-  var platformRing = new THREE.Mesh(
-    new THREE.TorusGeometry(3.65, 0.035, 12, 100),
+  var platformRing = new T.Mesh(
+    new T.TorusGeometry(3.65, 0.035, 12, 100),
     lightGold
   );
 
@@ -98,13 +97,13 @@
   platformRing.position.y = -1.49;
   financialGroup.add(platformRing);
 
-  // GRÁFICA DE CRECIMIENTO
+  // BARRAS DE CRECIMIENTO
   var bars = [];
   var heights = [0.8, 1.15, 1.55, 2.05, 2.65, 3.25];
 
   heights.forEach(function (height, index) {
-    var bar = new THREE.Mesh(
-      new THREE.BoxGeometry(0.52, 1, 0.58),
+    var bar = new T.Mesh(
+      new T.BoxGeometry(0.52, 1, 0.58),
       index === 5 ? lightGold : blue
     );
 
@@ -116,19 +115,19 @@
     financialGroup.add(bar);
   });
 
-  // LÍNEA DE CRECIMIENTO
+  // LINEA DE CRECIMIENTO
   var growthPoints = [
-    new THREE.Vector3(-2.5, -0.5, 0.45),
-    new THREE.Vector3(-1.7, -0.15, 0.45),
-    new THREE.Vector3(-0.9, 0.05, 0.45),
-    new THREE.Vector3(-0.1, 0.55, 0.45),
-    new THREE.Vector3(0.7, 0.95, 0.45),
-    new THREE.Vector3(1.5, 1.65, 0.45)
+    new T.Vector3(-2.5, -0.5, 0.45),
+    new T.Vector3(-1.7, -0.15, 0.45),
+    new T.Vector3(-0.9, 0.05, 0.45),
+    new T.Vector3(-0.1, 0.55, 0.45),
+    new T.Vector3(0.7, 0.95, 0.45),
+    new T.Vector3(1.5, 1.65, 0.45)
   ];
 
-  var growthLine = new THREE.Mesh(
-    new THREE.TubeGeometry(
-      new THREE.CatmullRomCurve3(growthPoints),
+  var growthLine = new T.Mesh(
+    new T.TubeGeometry(
+      new T.CatmullRomCurve3(growthPoints),
       80,
       0.035,
       8,
@@ -143,8 +142,8 @@
   var coins = [];
 
   for (var i = 0; i < 7; i++) {
-    var coin = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.56, 0.56, 0.13, 48),
+    var coin = new T.Mesh(
+      new T.CylinderGeometry(0.56, 0.56, 0.13, 48),
       i % 2 ? gold : lightGold
     );
 
@@ -161,7 +160,7 @@
     financialGroup.add(coin);
   }
 
-  // TEXTURA DE MONEDA CON EURO
+  // MONEDA PRINCIPAL CON SIMBOLO EURO
   var coinCanvas = document.createElement('canvas');
   coinCanvas.width = 512;
   coinCanvas.height = 512;
@@ -194,29 +193,29 @@
   context.textBaseline = 'middle';
   context.fillText('€', 256, 275);
 
-  var coinTexture = new THREE.CanvasTexture(coinCanvas);
-  coinTexture.encoding = THREE.sRGBEncoding;
+  var coinTexture = new T.CanvasTexture(coinCanvas);
+  coinTexture.encoding = T.sRGBEncoding;
 
-  var coinFace = new THREE.MeshStandardMaterial({
+  var coinFace = new T.MeshStandardMaterial({
     map: coinTexture,
     metalness: 0.72,
     roughness: 0.25
   });
 
-  var heroCoin = new THREE.Mesh(
-    new THREE.CylinderGeometry(1.12, 1.12, 0.2, 80),
+  var heroCoin = new T.Mesh(
+    new T.CylinderGeometry(1.12, 1.12, 0.2, 80),
     [gold, coinFace, coinFace]
   );
 
   heroCoin.rotation.x = Math.PI / 2;
 
-  var coinPivot = new THREE.Group();
+  var coinPivot = new T.Group();
   coinPivot.add(heroCoin);
   world.add(coinPivot);
 
   // ANILLO DECORATIVO
-  var halo = new THREE.Mesh(
-    new THREE.TorusGeometry(1.55, 0.018, 12, 100),
+  var halo = new T.Mesh(
+    new T.TorusGeometry(1.55, 0.018, 12, 100),
     lightGold
   );
 
@@ -224,27 +223,31 @@
   halo.rotation.y = 0.2;
   coinPivot.add(halo);
 
-  // PEQUEÑAS PARTÍCULAS
+  // PARTICULAS FLOTANTES
   var particles = [];
 
   for (var j = 0; j < 24; j++) {
-    var particle = new THREE.Mesh(
-      new THREE.SphereGeometry(0.025 + Math.random() * 0.035, 10, 10),
+    var particle = new T.Mesh(
+      new T.SphereGeometry(0.025 + Math.random() * 0.035, 10, 10),
       j % 3 === 0 ? lightGold : blue
     );
 
+    var baseY = (Math.random() - 0.5) * 4;
+
     particle.position.set(
       (Math.random() - 0.5) * 8,
-      (Math.random() - 0.5) * 4,
+      baseY,
       (Math.random() - 0.5) * 2
     );
 
+    particle.userData.baseY = baseY;
     particle.userData.phase = Math.random() * Math.PI * 2;
+
     particles.push(particle);
     world.add(particle);
   }
 
-  // ELEMENTOS DE LA PÁGINA
+  // ELEMENTOS DEL HTML
   var story = document.getElementById('story');
   var word = document.querySelector('.hero-word');
   var glass = document.querySelector('.glass');
@@ -273,7 +276,7 @@
     return value * value * (3 - 2 * value);
   }
 
-  // TAMAÑO RESPONSIVE
+  // ADAPTACION A PANTALLAS
   var cameraDistance = 12;
 
   function resize() {
@@ -314,13 +317,13 @@
   function updateInterface(progress) {
     if (word) {
       word.style.opacity = 1 - 0.55 * segment(progress, 0.1, 0.75);
+
       word.style.transform =
         'translateY(-' + (58 + progress * 9) + '%)';
     }
 
     captions.forEach(function (element, index) {
       var range = ranges[index];
-
       if (!range) return;
 
       var appear = segment(progress, range[0], range[1]);
@@ -353,7 +356,7 @@
     }
   }
 
-  // MOVIMIENTO DEL RATÓN
+  // MOVIMIENTO DEL RATON
   var mouseX = 0;
   var mouseY = 0;
   var targetX = 0;
@@ -376,7 +379,6 @@
   // RENDERIZADO
   var visible = true;
   var lastProgress = -1;
-  var animationId = null;
 
   function render(time) {
     var seconds = time * 0.001;
@@ -388,6 +390,7 @@
     // Barras que crecen
     bars.forEach(function (bar, index) {
       var start = index * 0.055;
+
       var amount = 0.3 + 0.7 * ease(
         segment(progress, start, 0.55 + start)
       );
@@ -415,7 +418,7 @@
 
     halo.rotation.z = seconds * 0.18;
 
-    // Profundidad y movimiento general
+    // Movimiento de la plataforma
     financialGroup.rotation.y =
       Math.sin(seconds * 0.25) * 0.08 + progress * 0.45;
 
@@ -424,15 +427,18 @@
 
     world.rotation.x = mouseY * 0.055;
 
-    // Partículas flotantes
+    // Particulas flotantes
     particles.forEach(function (particle) {
       var phase = particle.userData.phase;
 
-      particle.position.y += Math.sin(seconds + phase) * 0.0009;
+      particle.position.y =
+        particle.userData.baseY +
+        Math.sin(seconds + phase) * 0.12;
+
       particle.rotation.y = seconds * 0.15 + phase;
     });
 
-    // Cámara
+    // Camara
     camera.position.set(
       mouseX * 0.2,
       1.1 + mouseY * 0.12,
@@ -450,13 +456,11 @@
   }
 
   function loop(time) {
-    if (!visible || document.hidden) {
-      animationId = requestAnimationFrame(loop);
-      return;
+    if (visible && !document.hidden) {
+      render(time);
     }
 
-    render(time);
-    animationId = requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
   }
 
   // INICIO
@@ -477,7 +481,7 @@
     updateInterface(1);
   } else {
     render(0);
-    animationId = requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
   }
 
 })();
