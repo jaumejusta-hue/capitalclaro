@@ -1,39 +1,22 @@
-CAPITALCLARO — PAQUETE ACTUALIZADO
-Fecha: 26 de noviembre de 2026
+ACTUALIZACIÓN CAPITALCLARO — PORTADA 3D
 
-QUÉ INCLUYE
-- Portada renovada con nuevas secciones: errores frecuentes, glosario y lectura de rentabilidad.
-- 12 guías ampliadas, con ejemplos, errores frecuentes, fuentes oficiales, fecha de revisión y tiempos de lectura calculados.
-- Catálogo y cuatro páginas de categorías actualizados.
-- Cinco calculadoras conservadas y mejoradas.
-- Página de contacto rediseñada con ejemplos de dudas, explicación de los tres pasos y aviso de privacidad. Toma como inspiración la estructura de contacto de Capital en Claro, sin copiar su texto ni su diseño.
-- Imágenes originales en WebP (400, 800 y 1200 px) y `og-image.jpg` de 1200 × 630.
-- `CREDITOS.md`, `robots.txt` y `sitemap.xml`.
-- Animación 3D cargada de forma diferida, solo en pantallas de escritorio capaces; la imagen estática aparece primero y se mantiene como alternativa.
+Archivos incluidos:
+- index.html: reemplazo de la portada principal.
+- hero3d.js: nueva escena 3D, con pausa cuando queda fuera de pantalla o la pestaña está oculta.
+- mejoras-3d.css: refinamiento visual adicional.
 
-PÁGINAS LEGALES
-Los archivos `privacidad.html`, `cookies.html`, `aviso-legal.html` y `descargo.html` se han conservado exactamente como estaban en el ZIP recibido; no se ha cambiado su contenido.
+INSTALACIÓN EN GITHUB
+1. Haz una copia de seguridad de index.html y hero3d.js actuales.
+2. Sube y sustituye index.html.
+3. Sube y sustituye hero3d.js.
+4. Añade mejoras-3d.css a la raíz del repositorio.
+5. Comprueba que index.html contiene estas dos hojas de estilo en este orden:
+   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="mejoras-3d.css">
+6. No sustituyas app.js ni las páginas legales con este paquete.
 
-CÓMO PUBLICAR EN GITHUB PAGES
-1. Descarga y descomprime el ZIP.
-2. Abre la carpeta `capitalclaro` que está dentro.
-3. Entra en tu repositorio de GitHub.
-4. Sube el CONTENIDO de esa carpeta a la raíz del repositorio (no subas el ZIP como un archivo único).
-5. Acepta sustituir los archivos existentes y conserva la misma estructura de carpetas.
-6. Haz clic en “Commit changes”.
-7. Espera a que GitHub Pages publique el cambio y actualiza la web con Ctrl + Shift + R.
+DEPENDENCIAS
+La portada conserva Three.js r128 desde cdnjs y carga hero3d.js y app.js al final del body.
 
-ANTES DE SUBIR
-Haz una copia de seguridad o crea un commit que te permita volver a la versión anterior. Comprueba especialmente la portada, la página de herramientas, las 12 guías y el menú en móvil después de publicar.
-
-3D Y RENDIMIENTO
-La portada muestra primero un póster WebP ligero. El 3D se intenta cargar después de que la página termine de cargar, solo si el navegador parece suficientemente capaz y no hay ahorro de datos ni preferencia de movimiento reducido. La animación dura aproximadamente 1,5 segundos y después se detiene; no mantiene un bucle de renderizado continuo. Si WebGL o Three.js no están disponibles, se conserva la imagen estática.
-
-NUEVAS GUÍAS
-Las cuatro propuestas adicionales se guardan en `PROPUESTAS-GUIAS-PENDIENTES.md` y no se publican hasta recibir aprobación. Por eso el contador del sitio se mantiene en 12 guías.
-
-VÍDEOS
-No se han añadido vídeos: son opcionales y añadirlos podría aumentar el peso de descarga y retrasar la portada. Las imágenes son las alternativas visuales ligeras de esta versión.
-
-PRUEBAS
-Se han revisado enlaces internos, anclas, rutas de imágenes, estructura HTML, sintaxis de JavaScript, sintaxis CSS, las 12 guías (700–1.000 palabras) y tamaños de descarga. El paquete completo ocupa aproximadamente medio megabyte, por debajo del objetivo de 2 MB para los archivos estáticos. La emulación visual real de todos los tamaños y la puntuación Lighthouse no se pudieron certificar en este entorno: compruébalas también después de publicar en GitHub Pages.
+NOTA
+Este paquete solo actualiza la portada y el sistema 3D. No amplía aún los textos de las 12 guías ni modifica las calculadoras.
