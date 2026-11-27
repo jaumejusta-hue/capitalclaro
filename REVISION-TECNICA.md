@@ -1,11 +1,11 @@
 # Informe de revisión técnica de CapitalClaro
 
-Fecha de preparación: 26 de noviembre de 2026.
+Fecha de preparación: 26 de noviembre de 2026. Última actualización: 27 de noviembre de 2026.
 
 ## Comprobaciones completadas
 
-- 12 guías publicadas; todas tienen entre 700 y 1.000 palabras de contenido editorial, calculadas sin navegación, metadatos de lectura, imágenes ni aviso educativo.
-- Las 12 guías incluyen una sección de fuentes oficiales, una fecha de última revisión y un tiempo de lectura calculado como palabras / 200, redondeado al minuto superior.
+- 12 guías publicadas. Hasta el 26 de noviembre solo 3 (fondo de emergencia, crear presupuesto y regla 50/30/20) tenían 700-1.000 palabras, fuentes y fecha de revisión; las otras 9 eran guías cortas. El 27 de noviembre se ampliaron esas 9 y ahora las 12 tienen entre unas 840 y 1.180 palabras de contenido editorial (calculadas sin navegación, metadatos de lectura ni aviso educativo).
+- Las 12 guías incluyen una sección de fuentes oficiales, fecha de publicación y de última revisión (27 de noviembre de 2026 las ampliadas) y un tiempo de lectura calculado como palabras / 200, redondeado al minuto superior; las tarjetas del catálogo, de las categorías y de la portada usan los mismos minutos.
 - Las 12 guías incluyen una sección de errores frecuentes, recomendaciones prácticas o comprobaciones, y enlaces relacionados.
 - Catálogo: 12 tarjetas únicas. Categorías: 4 de ahorro y presupuesto, 3 de inversión y vivienda, 2 de educación financiera y 3 de emprendimiento y negocios.
 - 5 calculadoras en la página de herramientas.
@@ -27,3 +27,10 @@ No se han añadido vídeos. Se han priorizado ilustraciones WebP originales de b
 ## Propuestas pendientes
 
 Las cuatro guías nuevas sugeridas están descritas en `PROPUESTAS-GUIAS-PENDIENTES.md` y no se han publicado porque la instrucción inicial pedía aprobar los temas antes de redactarlas.
+
+## Notas de la actualización del 27 de noviembre de 2026
+
+- `og:image` y `twitter:card` presentes en todas las páginas; `Article` en JSON-LD (con fechas) en las 12 guías.
+- Las fuentes citadas en las guías ampliadas se abrieron una a una durante la redacción. Los datos que no se pudieron respaldar con una fuente oficial (por ejemplo, el 30-35 % de tasa de esfuerzo, el 80 % de financiación o el 10 % de gastos de compra) se presentan como referencias o supuestos de ejemplo, no como normas.
+- No se dan cuotas de autónomos, tipos de interés, Euríbor, IPC ni ayudas vigentes: las guías remiten a la fuente oficial.
+- Pendiente: completar los datos del titular y retirar el aviso «provisional» de las páginas legales (`aviso-legal.html`, `privacidad.html`), sustituir el correo personal de contacto por uno del proyecto y revisar la web con Lighthouse y en móvil tras publicar.
