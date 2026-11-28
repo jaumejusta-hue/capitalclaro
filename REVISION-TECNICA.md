@@ -34,3 +34,10 @@ Las cuatro guías nuevas sugeridas están descritas en `PROPUESTAS-GUIAS-PENDIEN
 - Las fuentes citadas en las guías ampliadas se abrieron una a una durante la redacción. Los datos que no se pudieron respaldar con una fuente oficial (por ejemplo, el 30-35 % de tasa de esfuerzo, el 80 % de financiación o el 10 % de gastos de compra) se presentan como referencias o supuestos de ejemplo, no como normas.
 - No se dan cuotas de autónomos, tipos de interés, Euríbor, IPC ni ayudas vigentes: las guías remiten a la fuente oficial.
 - Pendiente: si se añade publicidad (p. ej. AdSense) o actividad económica, completar la identificación del titular (nombre completo, NIF y domicilio o medio de contacto exigible), sustituir el correo personal por uno del proyecto y revisar la web con Lighthouse y en móvil tras publicar.
+
+## Rediseño y capa de movimiento (28 de noviembre de 2026)
+
+- Nueva página `sobre.html` (portada animada, índice con seguimiento, pestañas de contenido, contadores) con `sobre.css`.
+- Capa compartida `motion.css` + `motion.js` en todas las páginas: transición suave de tema, foco de luz en tarjetas, cinta de la portada con pausa al pasar el ratón, microinteracciones de botones. Todo respeta `prefers-reduced-motion`. Sin librerías ni vídeo.
+- Corrección de privacidad: Google Tag Manager estaba incrustado de forma fija en `index.html` y `guias.html` y se cargaba sin consentimiento. Se ha retirado; solo se carga desde `app.js` tras aceptar las cookies (como indica la política de cookies). No hay `noscript` de GTM porque no puede condicionarse al consentimiento.
+- Corrección móvil: la cabecera pegaba el contenido a los bordes en pantallas estrechas (`.bar` sin padding lateral).

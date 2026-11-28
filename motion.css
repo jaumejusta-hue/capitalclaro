@@ -1,0 +1,59 @@
+/* CapitalClaro · capa de movimiento compartida
+   Se carga después de styles.css. Solo CSS propio: sin librerías, sin vídeo.
+   Todo el movimiento se desactiva con prefers-reduced-motion. */
+
+:root { --ease: cubic-bezier(.2, .7, .2, 1); }
+
+/* ---------- Transición suave al cambiar de tema ---------- */
+html.theming *,
+html.theming *::before,
+html.theming *::after {
+  transition: background-color .45s var(--ease), color .45s var(--ease),
+              border-color .45s var(--ease), fill .45s var(--ease),
+              stroke .45s var(--ease), box-shadow .45s var(--ease) !important;
+}
+
+/* ---------- Microinteracciones de botones ---------- */
+.btn, .tg, .chip, .go { transition: transform .2s var(--ease), border-color .2s, box-shadow .2s, background-color .2s; }
+.btn:active, .tg:active, .chip:active { transform: scale(.96); }
+.btn.p:hover { box-shadow: 0 10px 26px color-mix(in srgb, var(--acc) 35%, transparent); transform: translateY(-1px); }
+.go { position: relative; }
+.go::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+a:hover > .go::after, .go:hover::after { transform: scaleX(1); }
+
+/* ---------- Tarjetas con foco de luz que sigue al ratón ---------- */
+.glow { position: relative; }
+.glow::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1;
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%),
+              color-mix(in srgb, var(--gold) 16%, transparent), transparent 62%);
+  opacity: 0; transition: opacity .35s var(--ease);
+}
+.glow:hover::before { opacity: 1; }
+.cat, .g, .tc, .k, .panel { transition: transform .3s var(--ease), border-color .3s, box-shadow .3s; }
+.cat:hover, .g:hover, .tc:hover { box-shadow: 0 18px 40px -18px rgba(11, 19, 32, .35); }
+[data-theme=dark] .cat:hover, [data-theme=dark] .g:hover, [data-theme=dark] .tc:hover { box-shadow: 0 18px 40px -18px #000; }
+
+/* ---------- La cinta de la portada se detiene al pasar el ratón ---------- */
+.ticker:hover .track, .ticker:focus-within .track { animation-play-state: paused; }
+
+/* ---------- Títulos: aparición palabra a palabra ---------- */
+.sw { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
+.sw > span { display: inline-block; transform: translateY(105%); transition: transform .8s var(--ease); transition-delay: calc(var(--i) * 70ms + var(--d0, 0ms)); }
+.in .sw > span, .sw.in > span { transform: none; }
+
+/* ---------- Fundido de secciones al salir de pantalla (scroll-driven) ----------
+   Mejora progresiva: solo en navegadores con animation-timeline. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .sx-fade { animation: sx-exit linear both; animation-timeline: view(); animation-range: exit 5% exit 85%; }
+    @keyframes sx-exit { to { opacity: .35; transform: scale(.985) translateY(-14px); } }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theming *, html.theming *::before, html.theming *::after { transition: none !important; }
+  .sw > span { transform: none; transition: none; }
+  .btn:active, .tg:active, .chip:active { transform: none; }
+  .glow::before { display: none; }
+}
